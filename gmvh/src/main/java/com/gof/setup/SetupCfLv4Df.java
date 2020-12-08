@@ -1,0 +1,95 @@
+package com.gof.setup;
+
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toMap;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.function.Function;
+import java.util.stream.Stream;
+
+import com.gof.dao.CfDao;
+import com.gof.dao.DfDao;
+import com.gof.dao.RaDao;
+import com.gof.entity.CfLv1Goc;
+import com.gof.entity.CfLv4Df;
+import com.gof.entity.DfLv3Flat;
+import com.gof.entity.RaLv2Delta;
+import com.gof.enums.ECoa;
+import com.gof.enums.ELiabType;
+import com.gof.factory.FacCfDf;
+import com.gof.infra.GmvConstant;
+import com.gof.provider.PrvdMst;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+public class SetupCfLv4Df {
+	private static	String bssd				=GmvConstant.BSSD;
+	private static	String stBssd			=GmvConstant.ST_BSSD;
+	private static	String vBssd			=GmvConstant.V_BSSD;
+	private static	String arkRunsetMode	=GmvConstant.ARK_RUNSET_MODE;
+	
+	private static Map<String, Map<Double, DfLv3Flat>> dfMap = new HashMap<String, Map<Double,DfLv3Flat>>();
+	
+	
+	public static Stream<CfLv4Df> createConversion() {
+		bssd =stBssd;
+		vBssd = stBssd;
+		return createAlone();
+	}
+	
+	public static Stream<CfLv4Df> createAlone() {
+		return createAlone(null);
+	}
+	
+	public static Stream<CfLv4Df> createDelta() {
+		List<CfLv4Df> rstList = new ArrayList<CfLv4Df>();
+		
+		for(String gocId: PrvdMst.getGocIdList()) {
+			rstList.addAll(buildDelta(gocId));
+		}
+		return rstList.stream();
+	}
+	
+	public static Stream<CfLv4Df> createAlone(String gocId){
+		List<String> aloneDeltaList = PrvdMst.getMstRunsetList(ECoa.EPV).stream()
+											 .filter(s-> s.getLiabType().equals(ELiabType.LIC) || arkRunsetMode.equals("N"))
+											 .filter(s->s.getPriorDeltaGroup()==null)
+											 .map(s->s.getDeltaGroup()).collect(toList())
+											;
+		
+		Map<String, DfLv3Flat> df = DfDao.getDfLv3FlatStream(bssd, gocId).collect(toMap(DfLv3Flat::getDfLv3Pk, Function.identity()));
+		
+		return  CfDao.getCfLv1GocStream(bssd,  gocId)
+					.filter(s->aloneDeltaList.contains(s.getDeltaGroup()))	
+					.map(s-> FacCfDf.build(s, df.getOrDefault(s.getDfLv3Pk(), new DfLv3Flat())));
+	}
+
+	public static Stream<CfLv4Df> createDelta(String gocId) {
+		return buildDelta(gocId).stream();
+	}
+	
+	private static List<CfLv4Df> buildDelta(String gocId){
+		List<CfLv4Df> rstList = new ArrayList<CfLv4Df>();
+		
+		Map<Double, DfLv3Flat> df = DfDao.getDfLv3FlatStream(bssd, gocId).collect(toMap(DfLv3Flat::getCfMonthNum, Function.identity()));
+			
+		Map<String, List<CfLv1Goc>> cfMap = CfDao.getCfLv1GocStream(bssd, gocId)
+													.filter(s-> s.getLiabType().equals(ELiabType.LIC) || arkRunsetMode.equals("N"))
+													.collect(groupingBy(s->s.getDeltaCashFlowPk(), TreeMap::new, toList())); 
+			
+			
+		for(Map.Entry<String, List<CfLv1Goc>> entry : cfMap.entrySet()) {
+			if(!entry.getValue().isEmpty()) {
+				Double cfMonthNum  = entry.getValue().get(0).getCfMonthNum();
+				rstList.addAll(FacCfDf.buildFromGeneration(entry.getValue(), df.get(cfMonthNum) ));		
+			}
+		}
+		return rstList;
+	}
+}

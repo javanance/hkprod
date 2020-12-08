@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+  <session-factory>
+<!--     <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+    <property name="hibernate.connection.url">jdbc:oracle:thin:@10.10.27.66:1525/IMSP</property>
+    <property name="hibernate.connection.username">ESGUSR</property>
+    <property name="hibernate.connection.password">ifrs1234!</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+     -->
+    
+    <property name="hibernate.jdbc.batch_size">50</property>
+    <property name="hibernate.order_inserts">true</property>
+    <property name="hibernate.order_updates">true</property>
+    
+    <property name="hibernate.c3p0.min_size">5</property>
+    <property name="hibernate.c3p0.max_size">50</property>
+    <!-- <property name="hibernate.c3p0.max_statements">50</property> -->
+    
+    <!-- <property name="show_sql">true</property> -->
+    <property name="hibernate.generate_statistics">true</property>
+    
+    <property name="hibernate.current_session_context_class">thread</property>
+    
+    <property name="hibernate.physical_naming_strategy">com.hkl.ifrs.bat.infra.PhysicalNamingStrategyImpl</property>
+    
+        <mapping class="com.hkl.ifrs.bat.entity.JobLog" />
+        <mapping class="com.hkl.ifrs.bat.entity.MstCode" />
+
+        <mapping class="com.hkl.ifrs.bat.entity.MstCfExp" />
+        <mapping class="com.hkl.ifrs.bat.entity.MapExpadj" />
+        <mapping class="com.hkl.ifrs.bat.entity.MstCfBnf" />
+        <mapping class="com.hkl.ifrs.bat.entity.MstCfEtc" />
+        <mapping class="com.hkl.ifrs.bat.entity.MstCfLv2" />
+        <mapping class="com.hkl.ifrs.bat.entity.MstCfGroup" />
+
+        <mapping class="com.hkl.ifrs.bat.entity.MstGoc" />
+        <mapping class="com.hkl.ifrs.bat.entity.MstCoa" />
+        <mapping class="com.hkl.ifrs.bat.entity.MstProdGoc" />
+        <mapping class="com.hkl.ifrs.bat.entity.MstRsDiv" />
+        <mapping class="com.hkl.ifrs.bat.entity.MstRunset" />
+        <mapping class="com.hkl.ifrs.bat.entity.MstDisclose" />
+
+        <mapping class="com.hkl.ifrs.bat.entity.MstContGoc" />
+        <mapping class="com.hkl.ifrs.bat.entity.MstRollFwd" />
+        <mapping class="com.hkl.ifrs.bat.entity.MstCalc" />
+        <mapping class="com.hkl.ifrs.bat.entity.MstCalcRfwdDetail" />
+        <mapping class="com.hkl.ifrs.bat.entity.MstCalcUlRefDetail" />
+        
+        <mapping class="com.hkl.ifrs.bat.entity.MapCfGroup" />
+        
+        <mapping class="com.hkl.ifrs.bat.entity.MapRunsetCalc" />
+        <mapping class="com.hkl.ifrs.bat.entity.MapJournalRollFwd" />
+        
+        <mapping class="com.hkl.ifrs.bat.entity.HisRsDiv" />
+
+        <mapping class="com.hkl.ifrs.bat.entity.RaLv1" />
+        <mapping class="com.hkl.ifrs.bat.entity.RaLv2Delta" />
+        <mapping class="com.hkl.ifrs.bat.entity.ElLv1" />
+        <mapping class="com.hkl.ifrs.bat.entity.ElLv2Delta" />
+
+        <mapping class="com.hkl.ifrs.bat.entity.RawCfNcont" />
+        <mapping class="com.hkl.ifrs.bat.entity.RawCash" />
+        <mapping class="com.hkl.ifrs.bat.entity.RawIntRate" />
+        
+        <mapping class="com.hkl.ifrs.bat.entity.RawFv" />
+        <mapping class="com.hkl.ifrs.bat.entity.RawFvGoc" />
+        <mapping class="com.hkl.ifrs.bat.entity.RawRa" />
+        <mapping class="com.hkl.ifrs.bat.entity.RawRaGoc" />
+        <mapping class="com.hkl.ifrs.bat.entity.RawElGoc" />
+        
+        <mapping class="com.hkl.ifrs.bat.entity.RawUlGocLossRcv" />
+        <mapping class="com.hkl.ifrs.bat.entity.RawRatioLossRcv" />
+        
+        <mapping class="com.hkl.ifrs.bat.entity.RawRatioCsm" />
+        <mapping class="com.hkl.ifrs.bat.entity.RawRatioDac" />
+        
+        
+        <mapping class="com.hkl.ifrs.bat.entity.RawCf" />
+        <mapping class="com.hkl.ifrs.bat.entity.RawCfDetail" />
+
+        <mapping class="com.hkl.ifrs.bat.entity.CfLv1Goc" />
+        <mapping class="com.hkl.ifrs.bat.entity.CfLv2Delta" />
+        <mapping class="com.hkl.ifrs.bat.entity.CfLv3Real" />
+        <mapping class="com.hkl.ifrs.bat.entity.CfLv4Df" />
+        
+        <mapping class="com.hkl.ifrs.bat.entity.DfLv1CurrRate" />
+        <mapping class="com.hkl.ifrs.bat.entity.DfLv2InitRate" />
+        <mapping class="com.hkl.ifrs.bat.entity.DfLv2WghtHis" />
+        <mapping class="com.hkl.ifrs.bat.entity.DfLv2WghtRate" />
+        <mapping class="com.hkl.ifrs.bat.entity.DfLv2Eir" />
+        <mapping class="com.hkl.ifrs.bat.entity.DfLv2EirNewgoc" />
+        <mapping class="com.hkl.ifrs.bat.entity.DfLv3Flat" />
+        <mapping class="com.hkl.ifrs.bat.entity.DfLv4Eir" />
+
+        <mapping class="com.hkl.ifrs.bat.entity.RatioRa" />
+        <mapping class="com.hkl.ifrs.bat.entity.RatioTvog" />
+        <mapping class="com.hkl.ifrs.bat.entity.RatioCovUnit" />
+        <mapping class="com.hkl.ifrs.bat.entity.RatioDac" />
+        <mapping class="com.hkl.ifrs.bat.entity.RatioLv2" />
+        
+        <mapping class="com.hkl.ifrs.bat.entity.RstCsm" />
+        <mapping class="com.hkl.ifrs.bat.entity.RstLossStep" />
+        <mapping class="com.hkl.ifrs.bat.entity.RstLossRcv" />
+
+        <mapping class="com.hkl.ifrs.bat.entity.NcontCf" />
+        <mapping class="com.hkl.ifrs.bat.entity.NcontRstRa" />
+        <mapping class="com.hkl.ifrs.bat.entity.NcontRstTvog" />
+        <mapping class="com.hkl.ifrs.bat.entity.NcontRstEpv" />
+        <mapping class="com.hkl.ifrs.bat.entity.NcontRstFlat" />
+        
+        
+        <mapping class="com.hkl.ifrs.bat.entity.FvFlat" />
+        <mapping class="com.hkl.ifrs.bat.entity.RstEpvNgoc" />
+
+        <mapping class="com.hkl.ifrs.bat.entity.RstBoxGoc" />
+        <mapping class="com.hkl.ifrs.bat.entity.RstBoxDetail" />
+        <mapping class="com.hkl.ifrs.bat.entity.RstRollFwd" />
+        
+        <mapping class="com.hkl.ifrs.bat.entity.AcctBoxGoc" />
+        
+  </session-factory>
+</hibernate-configuration>
+
+		

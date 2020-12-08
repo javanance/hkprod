@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+  <session-factory>
+<!--     <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+    <property name="hibernate.connection.url">jdbc:oracle:thin:@10.10.27.66:1525/IMSP</property>
+    <property name="hibernate.connection.username">ESGUSR</property>
+    <property name="hibernate.connection.password">ifrs1234!</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+     -->
+    
+    <property name="hibernate.jdbc.batch_size">500</property>
+    <property name="hibernate.order_inserts">true</property>
+    <property name="hibernate.order_updates">true</property>
+    
+    <property name="hibernate.c3p0.min_size">5</property>
+    <property name="hibernate.c3p0.max_size">50</property>
+    <!-- <property name="hibernate.c3p0.max_statements">50</property> -->
+    
+    <!-- <property name="show_sql">true</property> -->
+    <!-- <property name="hibernate.generate_statistics">true</property> -->
+    
+    <property name="hibernate.current_session_context_class">thread</property>
+    
+    <property name="hibernate.physical_naming_strategy">com.gof.infra.PhysicalNamingStrategyImpl</property>
+    
+        <mapping class="com.gof.entity.JobLog" />
+        <mapping class="com.gof.entity.MstCode" />
+
+        <!-- <mapping class="com.gof.entity.MstCfExp" />
+        <mapping class="com.gof.entity.MapExpadj" />
+        <mapping class="com.gof.entity.MstCfBnf" />
+        <mapping class="com.gof.entity.MstCfEtc" /> -->
+        <!-- <mapping class="com.gof.entity.MstCfClass" /> -->
+        
+        <mapping class="com.gof.entity.MstCfLv2" />
+        <mapping class="com.gof.entity.MstCfGroup" />
+
+        <mapping class="com.gof.entity.MstGoc" />
+        <mapping class="com.gof.entity.MstCoa" />
+        <mapping class="com.gof.entity.MstProdGoc" />
+        <!-- <mapping class="com.gof.entity.MstRsDiv" /> -->
+        <mapping class="com.gof.entity.MstRunset" />
+        <mapping class="com.gof.entity.MstDisclose" />
+
+        <mapping class="com.gof.entity.MstContGoc" />
+        <mapping class="com.gof.entity.MstRollFwd" />
+        <mapping class="com.gof.entity.MstCalc" />
+        
+        <!-- <mapping class="com.gof.entity.MapCfClass" /> -->
+        <mapping class="com.gof.entity.MapCfGroup" />
+        <mapping class="com.gof.entity.MapRunsetCalc" />
+        <mapping class="com.gof.entity.MapJournalRollFwd" />
+        
+       <!--  <mapping class="com.gof.entity.HisRsDiv" /> -->
+
+        <mapping class="com.gof.entity.RaLv1" />
+        <mapping class="com.gof.entity.RaLv2Delta" />
+        
+        <mapping class="com.gof.entity.TvogLv1" />
+        <mapping class="com.gof.entity.TvogLv2Delta" />
+        
+        <mapping class="com.gof.entity.RawModifiedRetroRst" />
+        <mapping class="com.gof.entity.RawFvGoc" />
+
+        <mapping class="com.gof.entity.RawIntRate" />
+        <mapping class="com.gof.entity.RawCash" />
+
+        <mapping class="com.gof.entity.RawCf" />
+        <mapping class="com.gof.entity.RawRaGoc" />
+        <mapping class="com.gof.entity.RawRaIbnr" />
+        <mapping class="com.gof.entity.RawTvogGoc" />
+        
+        <mapping class="com.gof.entity.RawRatioCsm" />
+        <mapping class="com.gof.entity.RawRatioDac" />
+        
+        <!-- <mapping class="com.gof.entity.RawCfNcont" /> -->
+        <!-- <mapping class="com.gof.entity.RawFv" /> -->
+        <!-- <mapping class="com.gof.entity.RawRa" /> -->
+<!--         <mapping class="com.gof.entity.RawTvog" /> -->
+        <!-- <mapping class="com.gof.entity.RawCfLic" /> -->
+        <!-- <mapping class="com.gof.entity.RawCfDetail" /> -->
+        
+        <mapping class="com.gof.entity.CfLv1Goc" />
+        <mapping class="com.gof.entity.CfLv2Delta" />
+        <mapping class="com.gof.entity.CfLv3Real" />
+        <mapping class="com.gof.entity.CfLv4Df" />
+        
+        <mapping class="com.gof.entity.DfLv1CurrRate" />
+        <!-- <mapping class="com.gof.entity.DfLv2InitRate" /> -->
+        <mapping class="com.gof.entity.DfLv2WghtHis" />
+        <mapping class="com.gof.entity.DfLv2WghtRate" />
+        <!-- <mapping class="com.gof.entity.DfLv2Eir" /> -->
+        <mapping class="com.gof.entity.DfLv2EirNewgoc" />
+        <mapping class="com.gof.entity.DfLv3Flat" />
+        <mapping class="com.gof.entity.DfLv4Eir" />
+
+        <mapping class="com.gof.entity.RatioRa" />
+        <mapping class="com.gof.entity.RatioTvog" />
+        <mapping class="com.gof.entity.RatioCovUnit" />
+        <mapping class="com.gof.entity.RatioDac" />
+        
+        <mapping class="com.gof.entity.RstCsm" />
+        <mapping class="com.gof.entity.RstLossStep" />
+
+        <!-- <mapping class="com.gof.entity.NcontCf" />
+        <mapping class="com.gof.entity.NcontRstRa" />
+        <mapping class="com.gof.entity.NcontRstTvog" />
+        <mapping class="com.gof.entity.NcontRstEpv" />
+        <mapping class="com.gof.entity.NcontRstFlat" /> -->
+        
+        
+        <!-- 
+        <mapping class="com.gof.entity.RstRa" /> 
+        <mapping class="com.gof.entity.RstTvog" />
+        <mapping class="com.gof.entity.RstEpv" />
+         -->
+        <!-- <mapping class="com.gof.entity.RstOci" /> -->
+        
+        <mapping class="com.gof.entity.FvFlat" />
+        <mapping class="com.gof.entity.RstEpvNgoc" />
+
+        <mapping class="com.gof.entity.RstLoss" />
+        <mapping class="com.gof.entity.RstDac" />
+        <mapping class="com.gof.entity.RstBoxGoc" />
+        <mapping class="com.gof.entity.RstBoxDetail" />
+        
+        <mapping class="com.gof.entity.RstRollFwd" />
+        <mapping class="com.gof.entity.RstRollFwdLoss" />
+        <mapping class="com.gof.entity.AcctBoxGoc" />
+    
+<!--    <mapping class="com.gof.entity.AcctBox" /> -->
+        <!-- <mapping class="com.gof.entity.AcctDisc" /> -->
+        
+        <mapping class="com.gof.ark.entity.ArkRawReleaseCf" />
+        <mapping class="com.gof.ark.entity.ArkRawCfEir" />
+        <mapping class="com.gof.ark.entity.ArkRawEpv" />
+        <mapping class="com.gof.ark.entity.ArkRawEpvDetail" />
+        <mapping class="com.gof.ark.entity.ArkRawFutureCf" />
+        
+        <mapping class="com.gof.ark.entity.ArkBoxMap" />
+        <mapping class="com.gof.ark.entity.ArkMstRunset" />
+        <mapping class="com.gof.ark.entity.ArkReleaseCf" />
+        <mapping class="com.gof.ark.entity.ArkFwdEpv" />
+        <mapping class="com.gof.ark.entity.ArkFutureCf" />
+        
+        <mapping class="com.gof.ark.entity.ArkItemRst" />
+        <mapping class="com.gof.ark.entity.ArkBoxRst" />
+        
+  </session-factory>
+</hibernate-configuration>
+
+		

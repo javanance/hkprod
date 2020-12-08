@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+    <property name="hibernate.connection.url">jdbc:oracle:thin:@10.10.27.66:1525/IMSP</property>
+    <property name="hibernate.connection.username">ESGUSR</property>
+    <property name="hibernate.connection.password">ifrs1234!</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+    
+    <!-- <property name="show_sql">true</property> -->
+    
+    <property name="hibernate.jdbc.batch_size">50</property>
+    <property name="hibernate.order_inserts">true</property>
+    <property name="hibernate.order_updates">true</property>
+    
+    <property name="hibernate.c3p0.min_size">5</property>
+    <property name="hibernate.c3p0.max_size">50</property>
+    <property name="hibernate.c3p0.max_statements">50</property>
+    
+    <property name="hibernate.generate_statistics">true</property>
+    
+    <property name="hibernate.current_session_context_class">thread</property>
+    
+    
+    
+    <property name="hibernate.physical_naming_strategy">com.gof.util.PhysicalNamingStrategyImpl</property>
+    
+    
+    <mapping class="com.gof.entity.IrCurve"/>
+    <mapping class="com.gof.entity.IrCurveHis"/>
+    <mapping class="com.gof.entity.BizIrCurveHis"/>
+    <mapping class="com.gof.entity.CreditSpread"/>
+    <mapping class="com.gof.entity.IrSce"/>
+    <mapping class="com.gof.entity.BizIrCurveSce"/>
+    <mapping class="com.gof.entity.IrShockSce"/>
+    <mapping class="com.gof.entity.IrShockParam"/>
+    <mapping class="com.gof.entity.IrShock"/>
+        
+
+    <mapping class="com.gof.entity.EsgScript"/>
+    <mapping class="com.gof.entity.EsgMst"/>
+    <mapping class="com.gof.entity.EsgMeta"/>
+    <mapping class="com.gof.entity.EsgRandom"/>
+    
+    
+    <mapping class="com.gof.entity.SwaptionVol"/>
+    <mapping class="com.gof.entity.ParamCalcHis"/>
+	<!-- <mapping class="com.gof.entity.ParamApply"/> -->
+    <mapping class="com.gof.entity.BizEsgParamUd"/>
+    
+    <mapping class="com.gof.entity.LiqPremium"/>
+    <mapping class="com.gof.entity.BizLiqPremiumUd"/>
+    <!-- <mapping class="com.gof.entity.SmithWilsonParam"/> -->
+    <mapping class="com.gof.entity.SmithWilsonParamHis"/>
+    <mapping class="com.gof.entity.BottomupDcnt"/>
+    
+    <mapping class="com.gof.entity.DcntSce"/>
+    
+
+    <!-- <mapping class="com.gof.entity.DiscRateCalcSetting"/> -->
+    <mapping class="com.gof.entity.DiscRateMst"/>
+    <mapping class="com.gof.entity.DiscRateAsstRevnCumRateUd"/>
+	<mapping class="com.gof.entity.DiscRateExBaseIrUd"/>
+	
+	<mapping class="com.gof.entity.DiscRateStatsAssetYield"/>
+	<mapping class="com.gof.entity.DiscRateStatsExtIr"/>
+    <mapping class="com.gof.entity.DiscRateStats"/>
+    <!-- <mapping class="com.gof.entity.DiscRateStatsUd"/> -->
+    
+    <mapping class="com.gof.entity.DiscRateWght"/>
+    <mapping class="com.gof.entity.DiscRateHis"/>
+    <mapping class="com.gof.entity.DiscRate"/>
+    <mapping class="com.gof.entity.BizDiscRateFwdSce"/>
+    <mapping class="com.gof.entity.BizDiscRateSce"/>
+	
+	
+	<mapping class="com.gof.entity.TransitionMatrixUd"/>
+	<mapping class="com.gof.entity.TransitionMatrix"/>
+    <mapping class="com.gof.entity.CorpCumPd"/>
+	<mapping class="com.gof.entity.CorpCrdGrdPd"/>
+	
+	
+	<mapping class="com.gof.entity.SegLgdUd"/>
+	<mapping class="com.gof.entity.SegLgd"/>
+	
+	<mapping class="com.gof.entity.Inflation"/>
+	<mapping class="com.gof.entity.InflationUd"/>
+	
+	
+	<mapping class="com.gof.entity.StockImpliedVolUd"/>
+	<mapping class="com.gof.entity.StockParamHis"/>
+	<mapping class="com.gof.entity.BizStockParamUd"/>
+	<mapping class="com.gof.entity.BizStockParam"/>
+	<mapping class="com.gof.entity.BizStockSce"/>
+	<mapping class="com.gof.entity.BizStockYield"/>
+	
+	<mapping class="com.gof.entity.StdAssetMst"/>
+	<mapping class="com.gof.entity.StdBondAssetHis"/>
+	<mapping class="com.gof.entity.StdStockAssetHis"/>
+	<mapping class="com.gof.entity.StdAssetVol"/>
+	<mapping class="com.gof.entity.StdAssetCorr"/>
+	
+	<!-- <mapping class="com.gof.model.DualMap"/> -->
+	
+	<!-- <mapping class="com.gof.entity.AssetCf"/>
+	<mapping class="com.gof.entity.LiabCf"/>
+	<mapping class="com.gof.entity.AssetYield"/>
+	<mapping class="com.gof.entity.AssetClassYield"/>
+	<mapping class="com.gof.entity.RefPortYield"/>
+	<mapping class="com.gof.entity.CashFlowMatchAdj"/>
+	<mapping class="com.gof.entity.TopDownDcnt"/>
+ -->	
+	
+	
+	<mapping class="com.gof.entity.BizEsgParam"/>
+	<mapping class="com.gof.entity.BizLiqPremium"/>
+	<mapping class="com.gof.entity.BizDiscountRate"/>
+	<mapping class="com.gof.entity.BizDiscountRateUd"/>
+	<mapping class="com.gof.entity.BizDiscountRateSce"/>
+	
+	<mapping class="com.gof.entity.BizDiscRate"/>
+	<mapping class="com.gof.entity.BizDiscRateStatUd"/>
+	<mapping class="com.gof.entity.BizDiscRateAdjUd"/>
+	<mapping class="com.gof.entity.InvestManageCostUd"/>
+	<mapping class="com.gof.entity.BizDiscRateStat"/>
+	<mapping class="com.gof.entity.DiscRateSce"/>
+	
+	<mapping class="com.gof.entity.BizCrdSpreadUd"/>
+	<mapping class="com.gof.entity.BizCrdSpread"/>
+	<mapping class="com.gof.entity.BizInflation"/>
+	
+	<mapping class="com.gof.entity.BizCorpPd"/>
+	<mapping class="com.gof.entity.BizIndiPd"/>
+	<mapping class="com.gof.entity.BizSegLgd"/>
+	<mapping class="com.gof.entity.BizSegPrepay"/>
+	<mapping class="com.gof.entity.BizSegPrepayUd"/>
+	
+	
+	<mapping class="com.gof.entity.JobLog"/>
+	
+										
+    
+    
+  </session-factory>
+</hibernate-configuration>
+
+		
